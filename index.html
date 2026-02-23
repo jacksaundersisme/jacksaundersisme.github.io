@@ -397,7 +397,7 @@
             <br><br>
 
             <font face="Courier New" size="2" color="#ffffff">
-              <b>email:</b> <a href="mailto:youremail@domain.com">jacksaundersisme@gmail.com</a><br>
+              <b>email:</b> <a href="mailto:jacksaundersisme@gmail.com">jacksaundersisme@gmail.com</a><br>
               <b>phone:</b> (404)606-1749<br>
               <b>availability:</b> weekdays / some weekends<br>
             </font>
@@ -591,42 +591,6 @@ window.addEventListener("load", function () {
 });
 </script>
 
-<script>
-(function(){
-  var audio = document.getElementById("bgMusic");
-  var btn = document.getElementById("musicToggle");
-  var icon = document.getElementById("musicIcon");
-
-  var ON_SRC  = "assets/audio_on.jpg";
-  var OFF_SRC = "assets/audio_off.jpg";
-
-  function setPlayingUI(isPlaying){
-    if (!icon) return;
-    icon.src = isPlaying ? ON_SRC : OFF_SRC;
-    icon.alt = isPlaying ? "music on" : "music off";
-  }
-
-  btn.addEventListener("click", function(){
-    if (!audio) return;
-
-    if (audio.paused) {
-      audio.play().then(function(){
-        setPlayingUI(true);
-      }).catch(function(err){
-        // Autoplay policies can still block play in some edge cases.
-        // Usually this won’t happen because this is a click.
-        console.log("Audio play blocked:", err);
-      });
-    } else {
-      audio.pause();
-      setPlayingUI(false);
-    }
-  });
-
-  // Default state
-  setPlayingUI(false);
-})();
-</script>
 
 
 <!-- TOP-RIGHT MUSIC TOGGLE (2002 style) -->
@@ -648,14 +612,8 @@ window.addEventListener("load", function () {
   var OFF_SRC = "assets/audio_off.jpg";
 
   function setPlayingUI(isPlaying){
-    if (!icon) return;
     icon.src = isPlaying ? ON_SRC : OFF_SRC;
     icon.alt = isPlaying ? "music on" : "music off";
-  }
-
-  if (!audio || !btn || !icon){
-    console.log("Missing element:", { audio: !!audio, btn: !!btn, icon: !!icon });
-    return;
   }
 
   btn.addEventListener("click", function(){
