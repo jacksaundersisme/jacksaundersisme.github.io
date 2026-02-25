@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-  
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+
+
   <meta charset="utf-8">
   <title>Jack Saunders : Cinematographer</title>
   <meta name="viewport" content="width=820">
@@ -343,9 +345,17 @@
             <br>
 
             <font color="#ffff00"><b>downloads:</b></font><br>
-            <font size="2" color="#ffffff">
-              <a href="assets/JACK_SAUNDERS_RESUME.pdf" target="_blank">Resume.pdf</a>
-            </font>
+<font size="2" color="#ffffff">
+  <a href="assets/JACK_SAUNDERS_RESUME.pdf"
+     target="_blank"
+     onclick="
+       var s=document.getElementById('resumeSound');
+       s.currentTime=0;
+       s.play();
+     ">
+     Resume.pdf
+  </a>
+</font>
           </div>
 
           <br>
@@ -670,6 +680,10 @@ window.addEventListener("load", function () {
   setPlayingUI(false);
 })();
 </script>
+
+<audio id="resumeSound" preload="auto">
+  <source src="assets/click.wav" type="audio/wav">
+</audio>
 
 
 
