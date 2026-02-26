@@ -1,98 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- ===================================================== -->
+  <!-- ===================== DOCUMENT HEAD ================= -->
+  <!-- ===================================================== -->
 
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
 
-
+  <!-- ===== META ===== -->
   <meta charset="utf-8">
   <title>Jack Saunders : Cinematographer</title>
   <meta name="viewport" content="width=820">
   <meta name="description" content="WELCOME TO MY OFFICIAL HOMEPAGE!!! Last updated: 2002.">
   <!-- Intentionally old-school: minimal modern CSS, lots of HTML attributes -->
 
+  <!-- ===================================================== -->
+  <!-- ====================== GLOBAL CSS =================== -->
+  <!-- ===================================================== -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000 url("assets/background.png") repeat;
+      color: #00ff66;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+    }
 
+    a { color: #66ccff; text-decoration: underline; }
+    a:visited { color: #cc99ff; }
+    a:hover { color: #ffff00; }
 
- <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: #000 url("assets/background.png") repeat;
-    color: #00ff66;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-  }
-  a { color: #66ccff; text-decoration: underline; }
-  a:visited { color: #cc99ff; }
-  a:hover { color: #ffff00; }
-  .wrap { width: 800px; margin: 0 auto; padding: 10px; }
-  .divider { height: 1px; background: #00ff66; margin: 6px 0; }
-  .tiny { font-size: 10px; }
-  .box { border: 2px outset #00ff66; background: #001a0d; padding: 6px; }
-  .pixel { image-rendering: pixelated; }
-  iframe { border: 3px ridge #00ff66; background: #000; }
+    .wrap { width: 800px; margin: 0 auto; padding: 10px; }
+    .divider { height: 1px; background: #00ff66; margin: 6px 0; }
+    .tiny { font-size: 10px; }
+    .box { border: 2px outset #00ff66; background: #001a0d; padding: 6px; }
+    .pixel { image-rendering: pixelated; }
+    iframe { border: 3px ridge #00ff66; background: #000; }
 
-  /* Fake XP popup */
-  #xpPopup {
-    position: fixed;
-    width: 320px;
-    background: #c0c0c0;
-    border: 2px solid #155362;
-    box-shadow: 3px 3px 0px #000;
-    font-family: Tahoma, Arial, sans-serif;
-    display: none;
-    z-index: 99999;
-  }
-  #xpPopup .titlebar {
-    background: #155362;
-    color: white;
-    padding: 4px;
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #xpPopup .content {
-    padding: 15px;
-    text-align: center;
-    font-size: 13px;
-    color: black;
-  }
-  #xpPopup button {
-    margin-top: 10px;
-    padding: 4px 10px;
-    font-size: 12px;
-  }
+    /* ===================================================== */
+    /* ===================== XP POPUP ======================= */
+    /* ===================================================== */
+    #xpPopup {
+      position: fixed;
+      width: 320px;
+      background: #c0c0c0;
+      border: 2px solid #155362;
+      box-shadow: 3px 3px 0px #000;
+      font-family: Tahoma, Arial, sans-serif;
+      display: none;
+      z-index: 99999;
+    }
+    #xpPopup .titlebar {
+      background: #155362;
+      color: white;
+      padding: 4px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #xpPopup .content {
+      padding: 15px;
+      text-align: center;
+      font-size: 13px;
+      color: black;
+    }
+    #xpPopup button {
+      margin-top: 10px;
+      padding: 4px 10px;
+      font-size: 12px;
+    }
 
-#musicToggle{
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 999999;
-  cursor: pointer;
-  user-select: none;
-}
-
-#musicToggle img{
-  image-rendering: pixelated;
-  border: 2px outset #00ff66;   /* matches your vibe */
-  background: #001a0d;
-}
-
-
-
-
-</style>
-
-
-
-
+    /* ===================================================== */
+    /* ================== MUSIC TOGGLE UI ================== */
+    /* ===================================================== */
+    #musicToggle{
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 999999;
+      cursor: pointer;
+      user-select: none;
+    }
+    #musicToggle img{
+      image-rendering: pixelated;
+      border: 2px outset #00ff66;   /* matches your vibe */
+      background: #001a0d;
+    }
+  </style>
 </head>
 
 <body>
+  <!-- ===================================================== -->
+  <!-- ====================== PAGE WRAP ==================== -->
+  <!-- ===================================================== -->
   <div class="wrap">
 
-    <!-- TOP BANNER -->
+    <!-- =================================================== -->
+    <!-- ===================== TOP BANNER ================== -->
+    <!-- =================================================== -->
     <table width="800" cellpadding="6" cellspacing="0" border="3" bordercolor="#00ff66" bgcolor="#001a0d">
       <tr>
         <td align="center">
@@ -115,98 +123,110 @@
 
     <br>
 
-    <!-- MAIN LAYOUT (table-based) -->
+    <!-- =================================================== -->
+    <!-- ===================== MAIN LAYOUT ================= -->
+    <!-- =================================================== -->
     <table width="800" cellpadding="6" cellspacing="0" border="0">
       <tr valign="top">
 
-        <!-- LEFT NAV -->
+        <!-- ================================================= -->
+        <!-- ==================== LEFT SIDEBAR =============== -->
+        <!-- ================================================= -->
         <td width="180">
+
+          <!-- =============== WELCOME + NAV + BUTTONS =============== -->
           <div class="box">
 
-  <!-- WELCOME + LAVALAMP (centered only) -->
-  <div style="text-align:center;">
-    <font face="Arial" size="3" color="#00ff66">
-      <b>WELCOME</b>
-    </font>
-    <br><br>
-    <img src="assets/lavalamp.gif" width="66" height="145" alt="spinning camera" class="pixel">
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- SITE NAV TITLE (centered only) -->
- <div style="text-align:center;">
-  <img src="assets/links.gif"
-       width="74"
-       height="30"
-       alt="site navigation"
-       class="pixel">
-</div>
-
-  <!-- LINKS (LEFT ALIGNED) -->
-  <div style="text-align:left;">
-    <font face="Courier New" size="2">
-      &raquo; <a href="#reel">REEL</a><br>
-      &raquo; <a href="#work">WORK</a><br>
-      &raquo; <a href="#gear">GEAR</a><br>
-      &raquo; <a href="#about">ABOUT</a><br>
-      &raquo; <a href="#links">LINKS</a><br>
-      &raquo; <a href="#contact">CONTACT</a><br>
-    </font>
-  </div>
+            <!-- WELCOME + LAVALAMP (centered only) -->
+            <div style="text-align:center;">
+              <font face="Arial" size="3" color="#00ff66">
+                <b>WELCOME</b>
+              </font>
+              <br><br>
+              <img src="assets/lavalamp.gif" width="66" height="145" alt="spinning camera" class="pixel">
+            </div>
 
             <div class="divider"></div>
 
-<center>
-  <font size="2" color="#ffffff"><b>cool buttons</b></font><br><br>
+            <!-- SITE NAV TITLE (centered only) -->
+            <div style="text-align:center;">
+              <img src="assets/links.gif"
+                   width="74"
+                   height="30"
+                   alt="site navigation"
+                   class="pixel">
+            </div>
 
-  <div style="
-    position:relative;
-    width:100%;
-    height:150px;
-    padding:10px 12px;
-    box-sizing:border-box;
-  ">
+            <!-- LINKS (LEFT ALIGNED) -->
+            <div style="text-align:left;">
+              <font face="Courier New" size="2">
+                &raquo; <a href="#reel">REEL</a><br>
+                &raquo; <a href="#work">WORK</a><br>
+                &raquo; <a href="#gear">GEAR</a><br>
+                &raquo; <a href="#about">ABOUT</a><br>
+                &raquo; <a href="#links">LINKS</a><br>
+                &raquo; <a href="#contact">CONTACT</a><br>
+              </font>
+            </div>
 
-    <img src="assets/email.gif"
-         width="75" height="50"
-         style="position:absolute; left:8px; top:5px;">
-
-    <img src="assets/doom.gif"
-         width="40" height="51"
-         style="position:absolute; right:16px; top:25px;">
-
-    <img src="assets/gba.gif"
-         width="100" height="57"
-         style="position:absolute; left:10px; top:86px;">
-
-  </div>
-</center>
             <div class="divider"></div>
 
+            <!-- COOL BUTTONS (OVERLAP / FREE POSITION) -->
+            <center>
+              <font size="2" color="#ffffff"><b>cool buttons</b></font><br><br>
+
+              <div style="
+                position:relative;
+                width:100%;
+                height:150px;
+                padding:10px 12px;
+                box-sizing:border-box;
+              ">
+
+                <img src="assets/email.gif"
+                     width="75" height="50"
+                     style="position:absolute; left:8px; top:5px;">
+
+                <img src="assets/doom.gif"
+                     width="40" height="51"
+                     style="position:absolute; right:16px; top:25px;">
+
+                <img src="assets/gba.gif"
+                     width="100" height="57"
+                     style="position:absolute; left:10px; top:86px;">
+
+              </div>
+            </center>
+
+            <div class="divider"></div>
+
+            <!-- VISITOR COUNT / GUESTBOOK -->
             <center class="tiny">
               <font color="#ffffff"><b>VISITOR COUNT:</b></font><br>
               <!-- Replace with a real counter image if you want -->
               <font face="Courier New" size="3" color="#00ff66">
-  <b>000042</b>
-</font>
+                <b>000042</b>
+              </font>
               <br><br>
               <font color="#ffffff">sign my guestbook:</font><br>
               <a href="https://jacksaunders.atabook.org/">CLICK HERE</a>
             </center>
+
           </div>
 
           <br>
 
+          <!-- ======================= STATUS BOX ======================= -->
           <div class="box">
             <div style="display:flex; align-items:center; gap:6px;">
-  <font color="#ffffff"><b>STATUS:</b></font>
-  <img src="assets/green_icon.gif"
-       width="12"
-       height="12"
-       alt="online"
-       class="pixel">
-</div>
+              <font color="#ffffff"><b>STATUS:</b></font>
+              <img src="assets/green_icon.gif"
+                   width="12"
+                   height="12"
+                   alt="online"
+                   class="pixel">
+            </div>
+
             <font face="Courier New" size="2">
               currently: exporting a cut<br>
               listening: Aphex Twin (maybe)<br>
@@ -214,17 +234,22 @@
             </font>
           </div>
 
-<br>
+          <br>
 
-<center>
-  <img src="assets/grill.gif" width="160" alt="grill"><br>
-  <img src="assets/jesus_ps2.gif" width="160" alt="new gif" style="margin-top:12px;">
-</center>
+          <!-- ================== EXTRA SIDEBAR GIFS ================== -->
+          <center>
+            <img src="assets/grill.gif" width="160" alt="grill"><br>
+            <img src="assets/jesus_ps2.gif" width="160" alt="new gif" style="margin-top:12px;">
+          </center>
 
         </td>
 
-        <!-- RIGHT CONTENT -->
+        <!-- ================================================= -->
+        <!-- =================== RIGHT CONTENT ================ -->
+        <!-- ================================================= -->
         <td width="620">
+
+          <!-- ======================= REEL ======================= -->
           <div class="box">
             <a name="reel"></a>
             <font size="4" color="#66ccff"><b>Jack Saunders Cinematography Reel</b></font>
@@ -237,98 +262,93 @@
 
             <br><br>
 
-  <center>
-    <font color="#ffff00"><b>MAIN REEL (2026)</b></font><br><br>
+            <center>
+              <font color="#ffff00"><b>MAIN REEL (2026)</b></font><br><br>
 
-    <table border="3" bordercolor="#00ff66" cellpadding="6" bgcolor="#000000">
-      <tr>
-        <td align="center">
-          <iframe 
-            src="https://player.vimeo.com/video/1035272516?title=0&byline=0&portrait=0" 
-            width="560" 
-            height="315" 
-            frameborder="0" 
-            allowfullscreen>
-          </iframe>
-          <br><br>
-          <font size="2" color="#ffffff">
-            direct link:
-            <a href="https://vimeo.com/1035272516" target="_blank">
-              vimeo.com/1035272516
-            </a>
-          </font>
-        </td>
-      </tr>
-    </table>
-
-  </center>
-
-            <br>
-
-<center>
-  <font color="#66ccff"><b>KAREN READ TRIAL — YANNETTI CRIMINAL DEFENSE PROMO</b></font><br><br>
-
-  <table border="3" bordercolor="#00ff66" cellpadding="6" bgcolor="#000000">
-    <tr>
-      <td align="center">
-
-        <iframe 
-          src="https://player.vimeo.com/video/1166415188?title=0&byline=0&portrait=0"
-          width="560"
-          height="315"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
-
-        <br><br>
-
-        <font size="2" color="#ffffff">
-          direct link:
-          <a href="https://vimeo.com/1166415188" target="_blank">
-            vimeo.com/1166415188
-          </a>
-        </font>
-
-      </td>
-    </tr>
-  </table>
-</center>
+              <table border="3" bordercolor="#00ff66" cellpadding="6" bgcolor="#000000">
+                <tr>
+                  <td align="center">
+                    <iframe
+                      src="https://player.vimeo.com/video/1035272516?title=0&byline=0&portrait=0"
+                      width="560"
+                      height="315"
+                      frameborder="0"
+                      allowfullscreen>
+                    </iframe>
+                    <br><br>
+                    <font size="2" color="#ffffff">
+                      direct link:
+                      <a href="https://vimeo.com/1035272516" target="_blank">
+                        vimeo.com/1035272516
+                      </a>
+                    </font>
+                  </td>
+                </tr>
+              </table>
+            </center>
 
             <br>
 
-<center>
-  <font color="#ff66cc"><b>CLIENT MARKETING PROMO - EDITOR </b></font><br><br>
+            <center>
+              <font color="#66ccff"><b>KAREN READ TRIAL — YANNETTI CRIMINAL DEFENSE PROMO</b></font><br><br>
 
-  <table border="3" bordercolor="#00ff66" cellpadding="6" bgcolor="#000000">
-    <tr>
-      <td align="center">
+              <table border="3" bordercolor="#00ff66" cellpadding="6" bgcolor="#000000">
+                <tr>
+                  <td align="center">
+                    <iframe
+                      src="https://player.vimeo.com/video/1166415188?title=0&byline=0&portrait=0"
+                      width="560"
+                      height="315"
+                      frameborder="0"
+                      allowfullscreen>
+                    </iframe>
 
-        <iframe 
-          src="https://player.vimeo.com/video/1152019567?title=0&byline=0&portrait=0"
-          width="560"
-          height="315"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
+                    <br><br>
 
-        <br><br>
+                    <font size="2" color="#ffffff">
+                      direct link:
+                      <a href="https://vimeo.com/1166415188" target="_blank">
+                        vimeo.com/1166415188
+                      </a>
+                    </font>
+                  </td>
+                </tr>
+              </table>
+            </center>
 
-        <font size="2" color="#ffffff">
-          direct link:
-          <a href="https://vimeo.com/1152019567" target="_blank">
-            vimeo.com/1152019567
-          </a>
-        </font>
+            <br>
 
-      </td>
-    </tr>
-  </table>
-</center>
+            <center>
+              <font color="#ff66cc"><b>CLIENT MARKETING PROMO - EDITOR </b></font><br><br>
 
+              <table border="3" bordercolor="#00ff66" cellpadding="6" bgcolor="#000000">
+                <tr>
+                  <td align="center">
+                    <iframe
+                      src="https://player.vimeo.com/video/1152019567?title=0&byline=0&portrait=0"
+                      width="560"
+                      height="315"
+                      frameborder="0"
+                      allowfullscreen>
+                    </iframe>
+
+                    <br><br>
+
+                    <font size="2" color="#ffffff">
+                      direct link:
+                      <a href="https://vimeo.com/1152019567" target="_blank">
+                        vimeo.com/1152019567
+                      </a>
+                    </font>
+                  </td>
+                </tr>
+              </table>
+            </center>
           </div>
 
           <br>
 
+          <!-- ======================= WORK ======================= -->
           <div class="box">
             <a name="work"></a>
             <font size="4" color="#66ccff"><b>WORK</b></font>
@@ -345,21 +365,22 @@
             <br>
 
             <font color="#ffff00"><b>downloads:</b></font><br>
-<font size="2" color="#ffffff">
-  <a href="assets/JACK_SAUNDERS_RESUME.pdf"
-     target="_blank"
-     onclick="
-       var s=document.getElementById('resumeSound');
-       s.currentTime=0;
-       s.play();
-     ">
-     Resume.pdf
-  </a>
-</font>
+            <font size="2" color="#ffffff">
+              <a href="assets/JACK_SAUNDERS_RESUME.pdf"
+                 target="_blank"
+                 onclick="
+                   var s=document.getElementById('resumeSound');
+                   s.currentTime=0;
+                   s.play();
+                 ">
+                Resume.pdf
+              </a>
+            </font>
           </div>
 
           <br>
 
+          <!-- ======================= GEAR ======================= -->
           <div class="box">
             <a name="gear"></a>
             <font size="4" color="#66ccff"><b>GEAR</b></font>
@@ -368,10 +389,10 @@
             <font size="2" color="#ffffff">
               Has worked extensively with cameras, lenses, audio, & lighting brands including:<br><br>
               <font face="Courier New">
-              cameras: Canon, Sony, Blackmagic, RED, ZCam <br>
-              lenses: Canon L Series, Sirui Anamorphic, Zeiss Primes, Sony G Master, Anamorphic Adapters <br>
-              lighting: ARRI, Aputure, Amaran, Lowel, Strobes <br>
-              audio: Zoom, RODE, Boom, Lavs <br>
+                cameras: Canon, Sony, Blackmagic, RED, ZCam <br>
+                lenses: Canon L Series, Sirui Anamorphic, Zeiss Primes, Sony G Master, Anamorphic Adapters <br>
+                lighting: ARRI, Aputure, Amaran, Lowel, Strobes <br>
+                audio: Zoom, RODE, Boom, Lavs <br>
               </font>
             </font>
 
@@ -383,6 +404,7 @@
 
           <br>
 
+          <!-- ======================= ABOUT ======================= -->
           <div class="box">
             <a name="about"></a>
             <font size="4" color="#66ccff"><b>ABOUT</b></font>
@@ -410,11 +432,11 @@
                 </td>
               </tr>
             </table>
-
           </div>
 
           <br>
 
+          <!-- ======================= LINKS ======================= -->
           <div class="box">
             <a name="links"></a>
             <font size="4" color="#66ccff"><b>LINKS</b></font>
@@ -432,6 +454,7 @@
 
           <br>
 
+          <!-- ======================= CONTACT ======================= -->
           <div class="box">
             <a name="contact"></a>
             <font size="4" color="#66ccff"><b>CONTACT</b></font>
@@ -462,6 +485,7 @@
 
           <br>
 
+          <!-- ======================= FOOTER ======================= -->
           <center class="tiny">
             <font color="#ffffff">
               &copy; 2002 Jack Saunders. all rights reserved. do not steal my pixels.
@@ -473,219 +497,220 @@
     </table>
 
     <br>
-
   </div>
-<script>
-// "Clone cursor" trail (2002 DHTML vibes), 6 cursors that appear only while moving,
-// then catch up and hide underneath the real cursor.
-(function () {
-  var COUNT = 6;                 // how many fake cursors
-  var EASE = 0.20;               // follow speed (higher = snappier)
-  var SHOW_DISTANCE = 6;         // if trail is spread out beyond this, show it
-  var HIDE_DISTANCE = 1.25;      // when all are basically on top of cursor, hide
-  var STOP_DELAY_MS = 60;        // how quickly we decide you've "stopped"
-  var OFFSET_X = 0;              // tweak if needed
-  var OFFSET_Y = 0;              // tweak if needed
 
-  // A simple "classic arrow cursor" SVG (white fill, black outline)
-  // This won't be *your* system cursor, but it's extremely close visually.
-  var cursorSVG =
-    'data:image/svg+xml;utf8,' +
-    encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">' +
-        '<path d="M3 1 L3 15 L6.8 11.2 L9.6 18 L12 17 L9.2 10.2 L14 10 Z" fill="white" stroke="black" stroke-width="1"/>' +
-      '</svg>'
-    );
+  <!-- ===================================================== -->
+  <!-- ======================= SCRIPTS ===================== -->
+  <!-- ===================================================== -->
 
-  var nodes = [];
-  var pos = [];
-  var targetX = 0, targetY = 0;
-  var lastMove = 0;
-  var moving = false;
+  <!-- =================== CURSOR TRAIL SCRIPT =================== -->
+  <script>
+  // "Clone cursor" trail (2002 DHTML vibes), 6 cursors that appear only while moving,
+  // then catch up and hide underneath the real cursor.
+  (function () {
+    var COUNT = 6;                 // how many fake cursors
+    var EASE = 0.20;               // follow speed (higher = snappier)
+    var SHOW_DISTANCE = 6;         // if trail is spread out beyond this, show it
+    var HIDE_DISTANCE = 1.25;      // when all are basically on top of cursor, hide
+    var STOP_DELAY_MS = 60;        // how quickly we decide you've "stopped"
+    var OFFSET_X = 0;              // tweak if needed
+    var OFFSET_Y = 0;              // tweak if needed
 
-  // Create cursor clones
-  for (var i = 0; i < COUNT; i++) {
-    var d = document.createElement("div");
-    d.style.position = "absolute";
-    d.style.width = "20px";
-    d.style.height = "20px";
-    d.style.zIndex = "9999";
-    d.style.pointerEvents = "none";
-    d.style.backgroundImage = 'url("' + cursorSVG + '")';
-    d.style.backgroundRepeat = "no-repeat";
-    d.style.backgroundSize = "20px 20px";
-    d.style.visibility = "hidden";
-    d.style.opacity = (1 - i * 0.12).toString(); // slight fade back in trail
-    // Make sure we don't accidentally show a text cursor etc.
-    d.style.cursor = "default";
+    // A simple "classic arrow cursor" SVG (white fill, black outline)
+    // This won't be *your* system cursor, but it's extremely close visually.
+    var cursorSVG =
+      'data:image/svg+xml;utf8,' +
+      encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">' +
+          '<path d="M3 1 L3 15 L6.8 11.2 L9.6 18 L12 17 L9.2 10.2 L14 10 Z" fill="white" stroke="black" stroke-width="1"/>' +
+        '</svg>'
+      );
 
-    document.body.appendChild(d);
-    nodes.push(d);
+    var nodes = [];
+    var pos = [];
+    var targetX = 0, targetY = 0;
+    var lastMove = 0;
+    var moving = false;
 
-    pos.push({ x: 0, y: 0 });
-  }
+    // Create cursor clones
+    for (var i = 0; i < COUNT; i++) {
+      var d = document.createElement("div");
+      d.style.position = "absolute";
+      d.style.width = "20px";
+      d.style.height = "20px";
+      d.style.zIndex = "9999";
+      d.style.pointerEvents = "none";
+      d.style.backgroundImage = 'url("' + cursorSVG + '")';
+      d.style.backgroundRepeat = "no-repeat";
+      d.style.backgroundSize = "20px 20px";
+      d.style.visibility = "hidden";
+      d.style.opacity = (1 - i * 0.12).toString(); // slight fade back in trail
+      // Make sure we don't accidentally show a text cursor etc.
+      d.style.cursor = "default";
 
-  function now() { return Date.now ? Date.now() : +new Date(); }
+      document.body.appendChild(d);
+      nodes.push(d);
 
-  // Track mouse position
-  document.addEventListener("mousemove", function (e) {
-    var mx = (e.pageX != null) ? e.pageX : e.clientX + document.body.scrollLeft;
-    var my = (e.pageY != null) ? e.pageY : e.clientY + document.body.scrollTop;
+      pos.push({ x: 0, y: 0 });
+    }
 
-    targetX = mx + OFFSET_X;
-    targetY = my + OFFSET_Y;
+    function now() { return Date.now ? Date.now() : +new Date(); }
 
-    lastMove = now();
-    moving = true;
+    // Track mouse position
+    document.addEventListener("mousemove", function (e) {
+      var mx = (e.pageX != null) ? e.pageX : e.clientX + document.body.scrollLeft;
+      var my = (e.pageY != null) ? e.pageY : e.clientY + document.body.scrollTop;
 
-    // On first movement, seed all cursors at the mouse so it doesn't "snap" in from 0,0
-    if (pos[0].x === 0 && pos[0].y === 0) {
+      targetX = mx + OFFSET_X;
+      targetY = my + OFFSET_Y;
+
+      lastMove = now();
+      moving = true;
+
+      // On first movement, seed all cursors at the mouse so it doesn't "snap" in from 0,0
+      if (pos[0].x === 0 && pos[0].y === 0) {
+        for (var i = 0; i < COUNT; i++) {
+          pos[i].x = targetX;
+          pos[i].y = targetY;
+        }
+      }
+    }, { passive: true });
+
+    function dist(ax, ay, bx, by) {
+      var dx = ax - bx, dy = ay - by;
+      return Math.sqrt(dx*dx + dy*dy);
+    }
+
+    function setVisible(v) {
       for (var i = 0; i < COUNT; i++) {
-        pos[i].x = targetX;
-        pos[i].y = targetY;
+        nodes[i].style.visibility = v ? "visible" : "hidden";
       }
     }
-  }, { passive: true });
 
-  function dist(ax, ay, bx, by) {
-    var dx = ax - bx, dy = ay - by;
-    return Math.sqrt(dx*dx + dy*dy);
-  }
+    function render() {
+      // Lead cursor follows mouse target
+      pos[0].x += (targetX - pos[0].x) * EASE;
+      pos[0].y += (targetY - pos[0].y) * EASE;
 
-  function setVisible(v) {
-    for (var i = 0; i < COUNT; i++) {
-      nodes[i].style.visibility = v ? "visible" : "hidden";
-    }
-  }
+      // Each next cursor follows the one in front
+      for (var i = 1; i < COUNT; i++) {
+        pos[i].x += (pos[i-1].x - pos[i].x) * EASE;
+        pos[i].y += (pos[i-1].y - pos[i].y) * EASE;
+      }
 
-  function render() {
-    // Lead cursor follows mouse target
-    pos[0].x += (targetX - pos[0].x) * EASE;
-    pos[0].y += (targetY - pos[0].y) * EASE;
+      // Position DOM elements
+      for (var j = 0; j < COUNT; j++) {
+        // Slight subpixel smoothing looks too modern; rounding feels more 2002
+        nodes[j].style.left = (pos[j].x | 0) + "px";
+        nodes[j].style.top  = (pos[j].y | 0) + "px";
+      }
 
-    // Each next cursor follows the one in front
-    for (var i = 1; i < COUNT; i++) {
-      pos[i].x += (pos[i-1].x - pos[i].x) * EASE;
-      pos[i].y += (pos[i-1].y - pos[i].y) * EASE;
-    }
+      // Determine if we're "stopped"
+      var t = now();
+      if (moving && (t - lastMove) > STOP_DELAY_MS) moving = false;
 
-    // Position DOM elements
-    for (var j = 0; j < COUNT; j++) {
-      // Slight subpixel smoothing looks too modern; rounding feels more 2002
-      nodes[j].style.left = (pos[j].x | 0) + "px";
-      nodes[j].style.top  = (pos[j].y | 0) + "px";
-    }
+      // Decide when to show/hide:
+      // - show when moving AND the trail is meaningfully stretched
+      // - when not moving, let them catch up; hide once they're all basically under cursor
+      var spread = dist(pos[COUNT-1].x, pos[COUNT-1].y, pos[0].x, pos[0].y);
+      var allClose =
+        dist(pos[0].x, pos[0].y, targetX, targetY) < HIDE_DISTANCE &&
+        dist(pos[COUNT-1].x, pos[COUNT-1].y, targetX, targetY) < (HIDE_DISTANCE + 0.5);
 
-    // Determine if we're "stopped"
-    var t = now();
-    if (moving && (t - lastMove) > STOP_DELAY_MS) moving = false;
+      if (moving && spread > SHOW_DISTANCE) {
+        setVisible(true);
+      } else if (!moving && allClose) {
+        setVisible(false);
+      } else {
+        // If they're still catching up, keep visible briefly
+        // (or hide if you want it stricter—your call)
+        if (!moving) setVisible(true);
+      }
 
-    // Decide when to show/hide:
-    // - show when moving AND the trail is meaningfully stretched
-    // - when not moving, let them catch up; hide once they're all basically under cursor
-    var spread = dist(pos[COUNT-1].x, pos[COUNT-1].y, pos[0].x, pos[0].y);
-    var allClose =
-      dist(pos[0].x, pos[0].y, targetX, targetY) < HIDE_DISTANCE &&
-      dist(pos[COUNT-1].x, pos[COUNT-1].y, targetX, targetY) < (HIDE_DISTANCE + 0.5);
-
-    if (moving && spread > SHOW_DISTANCE) {
-      setVisible(true);
-    } else if (!moving && allClose) {
-      setVisible(false);
-    } else {
-      // If they're still catching up, keep visible briefly
-      // (or hide if you want it stricter—your call)
-      if (!moving) setVisible(true);
+      requestAnimationFrame(render);
     }
 
+    // Start hidden until first movement
+    setVisible(false);
     requestAnimationFrame(render);
+  })();
+  </script>
+
+  <!-- ======================= XP POPUP ======================= -->
+  <div id="xpPopup">
+    <div class="titlebar">
+      <span>Microsoft Internet Explorer</span>
+      <span style="cursor:pointer;" onclick="closePopup()">✕</span>
+    </div>
+    <div class="content">
+      🎉 <b>Congratulations!</b><br><br>
+      You've won one <b>FREE VIDEO SHOOT!</b><br><br>
+      <button onclick="closePopup()">CLAIM NOW</button>
+    </div>
+  </div>
+
+  <script>
+  function closePopup() {
+    document.getElementById("xpPopup").style.display = "none";
   }
 
-  // Start hidden until first movement
-  setVisible(false);
-  requestAnimationFrame(render);
-})();
-</script>
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      var popup = document.getElementById("xpPopup");
+      popup.style.display = "block";
 
-
-
-<div id="xpPopup">
-  <div class="titlebar">
-    <span>Microsoft Internet Explorer</span>
-    <span style="cursor:pointer;" onclick="closePopup()">✕</span>
-  </div>
-  <div class="content">
-    🎉 <b>Congratulations!</b><br><br>
-    You've won one <b>FREE VIDEO SHOOT!</b><br><br>
-    <button onclick="closePopup()">CLAIM NOW</button>
-  </div>
-</div>
-
-<script>
-function closePopup() {
-  document.getElementById("xpPopup").style.display = "none";
-}
-
-window.addEventListener("load", function () {
-  setTimeout(function () {
-    var popup = document.getElementById("xpPopup");
-    popup.style.display = "block";
-
-    // Random position (very 2002)
-    popup.style.top = (window.innerHeight / 2 - 100) + "px";
-    popup.style.left = (window.innerWidth / 2 - 160) + "px";
-  }, 120000);
-});
-</script>
-
-
-
-<!-- TOP-RIGHT MUSIC TOGGLE (2002 style) -->
-<div id="musicToggle" title="click for tunes">
-  <img id="musicIcon" src="assets/audio_off.jpg" width="64" height="64" alt="music">
-</div>
-
-<audio id="bgMusic" loop preload="auto">
-  <source src="assets/music.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-(function(){
-  var audio = document.getElementById("bgMusic");
-  var btn = document.getElementById("musicToggle");
-  var icon = document.getElementById("musicIcon");
-
-  var ON_SRC  = "assets/audio_on.jpg";
-  var OFF_SRC = "assets/audio_off.jpg";
-
-  function setPlayingUI(isPlaying){
-    icon.src = isPlaying ? ON_SRC : OFF_SRC;
-    icon.alt = isPlaying ? "music on" : "music off";
-  }
-
-  btn.addEventListener("click", function(){
-    if (audio.paused) {
-      audio.play().then(function(){
-        setPlayingUI(true);
-      }).catch(function(err){
-        console.log("Audio play blocked:", err);
-        alert("Browser blocked audio. Click the page once then try again.");
-      });
-    } else {
-      audio.pause();
-      setPlayingUI(false);
-    }
+      // Random position (very 2002)
+      popup.style.top = (window.innerHeight / 2 - 100) + "px";
+      popup.style.left = (window.innerWidth / 2 - 160) + "px";
+    }, 120000);
   });
+  </script>
 
-  setPlayingUI(false);
-})();
-</script>
+  <!-- ======================= MUSIC TOGGLE ======================= -->
+  <div id="musicToggle" title="click for tunes">
+    <img id="musicIcon" src="assets/audio_off.jpg" width="64" height="64" alt="music">
+  </div>
 
-<audio id="resumeSound" preload="auto">
-  <source src="assets/click.wav" type="audio/wav">
-</audio>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
 
+  <script>
+  (function(){
+    var audio = document.getElementById("bgMusic");
+    var btn = document.getElementById("musicToggle");
+    var icon = document.getElementById("musicIcon");
 
+    var ON_SRC  = "assets/audio_on.jpg";
+    var OFF_SRC = "assets/audio_off.jpg";
+
+    function setPlayingUI(isPlaying){
+      icon.src = isPlaying ? ON_SRC : OFF_SRC;
+      icon.alt = isPlaying ? "music on" : "music off";
+    }
+
+    btn.addEventListener("click", function(){
+      if (audio.paused) {
+        audio.play().then(function(){
+          setPlayingUI(true);
+        }).catch(function(err){
+          console.log("Audio play blocked:", err);
+          alert("Browser blocked audio. Click the page once then try again.");
+        });
+      } else {
+        audio.pause();
+        setPlayingUI(false);
+      }
+    });
+
+    setPlayingUI(false);
+  })();
+  </script>
+
+  <!-- =================== RESUME CLICK SOUND =================== -->
+  <audio id="resumeSound" preload="auto">
+    <source src="assets/click.wav" type="audio/wav">
+  </audio>
 
 </body>
 </html>
