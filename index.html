@@ -636,9 +636,80 @@
   })();
   </script>
 
+  <script>
+// draggable XP popup (wait until page is loaded)
+window.addEventListener("load", function () {
+  var popup = document.getElementById("xpPopup");
+  var bar   = document.getElementById("xpTitlebar");
+  if (!popup || !bar) {
+    console.log("Drag init failed:", { popup: !!popup, bar: !!bar });
+    return;
+  }
+
+  // Optional: make the titlebar feel draggable
+  bar.style.cursor = "move";
+  bar.style.userSelect = "none";
+
+  var dragging = false;
+  var startX = 0, startY = 0;
+  var startLeft = 0, startTop = 0;
+
+  function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+
+  function onDown(e){
+    // Only drag if the popup is visible
+    if (popup.style.display === "none") return;
+
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+
+    var rect = popup.getBoundingClientRect();
+    startLeft = rect.left;
+    startTop  = rect.top;
+
+    // Ensure we are controlling it with left/top
+    popup.style.right = "auto";
+    popup.style.bottom = "auto";
+
+    e.preventDefault();
+  }
+
+  function onMove(e){
+    if (!dragging) return;
+
+    var dx = e.clientX - startX;
+    var dy = e.clientY - startY;
+
+    var newLeft = startLeft + dx;
+    var newTop  = startTop + dy;
+
+    var margin = 6;
+    var maxLeft = window.innerWidth - popup.offsetWidth - margin;
+    var maxTop  = window.innerHeight - popup.offsetHeight - margin;
+
+    newLeft = clamp(newLeft, margin, maxLeft);
+    newTop  = clamp(newTop, margin, maxTop);
+
+    popup.style.left = newLeft + "px";
+    popup.style.top  = newTop + "px";
+  }
+
+  function onUp(){
+    dragging = false;
+  }
+
+  bar.addEventListener("mousedown", onDown);
+  window.addEventListener("mousemove", onMove);
+  window.addEventListener("mouseup", onUp);
+
+  console.log("XP popup drag enabled ✅");
+});
+</script>
+
   <!-- ======================= XP POPUP ======================= -->
   <div id="xpPopup">
-    <div class="titlebar">
+    <div class="titlebar" id="xpTitlebar">
       <span>Microsoft Internet Explorer</span>
       <span style="cursor:pointer;" onclick="closePopup()">✕</span>
     </div>
