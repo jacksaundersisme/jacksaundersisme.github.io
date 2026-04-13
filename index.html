@@ -89,10 +89,48 @@
       border: 2px outset #00ff66;   /* matches your vibe */
       background: #001a0d;
     }
-  </style>
+
+
+    /* ==================== DVD BOUNCER ==================== */
+#dvdLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#dvdCanvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.wrap {
+  position: relative;
+  z-index: 2;
+}
+
+#musicToggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 999999;
+}
+
+#xpPopup {
+  z-index: 99999;
+}
+
+</style>
 </head>
 
 <body>
+
+<div id="dvdLayer">
+  <canvas id="dvdCanvas" aria-label="DVD logo animation"></canvas>
+</div>
+
   <!-- ===================================================== -->
   <!-- ====================== PAGE WRAP ==================== -->
   <!-- ===================================================== -->
@@ -796,5 +834,109 @@ window.addEventListener("load", function () {
     <source src="assets/click.wav" type="audio/wav">
   </audio>
 
+
+  <script>
+(function () {
+  var canvas = document.getElementById("dvdCanvas");
+  if (!canvas) return;
+
+  var ctx = canvas.getContext("2d");
+  var img = new Image();
+  img.src = "assets/dvd_logo.png";
+
+  var x = 40;
+  var y = 40;
+  var dx = 1.2;
+  var dy = 0.9;
+
+  var logoW = 140;
+  var logoH = 64;
+
+  var colors = ["#FF008B","#BE00FF","#FFFA01","#FF8300","#00FEFF","#FF2600","#0026FF"];
+  var colorIndex = 0;
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function nextColor() {
+    var newIndex = colorIndex;
+    while (newIndex === colorIndex) {
+      newIndex = Math.floor(Math.random() * colors.length);
+    }
+    colorIndex = newIndex;
+  }
+
+  function drawTintedImage() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (!img.complete) return;
+
+    ctx.drawImage(img, x, y, logoW, logoH);
+    ctx.globalCompositeOperation = "source-in";
+    ctx.fillStyle = colors[colorIndex];
+    ctx.fillRect(x, y, logoW, logoH);
+    ctx.globalCompositeOperation = "source-over";
+  }
+
+  function animate() {
+    x += dx;
+    y += dy;
+
+    var hit = false;
+
+    if (x <= 0) {
+      x = 0;
+      dx = Math.abs(dx);
+      hit = true;
+    } else if (x + logoW >= canvas.width) {
+      x = canvas.width - logoW;
+      dx = -Math.abs(dx);
+      hit = true;
+    }
+
+    if (y <= 0) {
+      y = 0;
+      dy = Math.abs(dy);
+      hit = true;
+    } else if (y + logoH >= canvas.height) {
+      y = canvas.height - logoH;
+      dy = -Math.abs(dy);
+      hit = true;
+    }
+
+    if (hit) nextColor();
+
+    drawTintedImage();
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("resize", resizeCanvas);
+
+  img.onload = function () {
+    resizeCanvas();
+
+    if (img.naturalWidth && img.naturalHeight) {
+      var ratio = img.naturalWidth / img.naturalHeight;
+      logoH = Math.round(logoW / ratio);
+    }
+
+    drawTintedImage();
+    requestAnimationFrame(animate);
+  };
+
+  resizeCanvas();
+
+  if (img.complete) {
+    if (img.naturalWidth && img.naturalHeight) {
+      var ratio = img.naturalWidth / img.naturalHeight;
+      logoH = Math.round(logoW / ratio);
+    }
+    drawTintedImage();
+    requestAnimationFrame(animate);
+  }
+})();
+</script>
 </body>
 </html>
