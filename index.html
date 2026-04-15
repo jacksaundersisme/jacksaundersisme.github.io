@@ -19,6 +19,10 @@
   <!-- ====================== GLOBAL CSS =================== -->
   <!-- ===================================================== -->
   <style>
+    html, body {
+      height: 100%;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -26,6 +30,7 @@
       color: #00ff66;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
+      overflow: hidden;
     }
 
     a { color: #66ccff; text-decoration: underline; }
@@ -86,13 +91,12 @@
     }
     #musicToggle img{
       image-rendering: pixelated;
-      border: 2px outset #00ff66;   /* matches your vibe */
+      border: 2px outset #00ff66;
       background: #001a0d;
     }
 
-
     /* ==================== DVD BOUNCER ==================== */
-#dvdLayer {
+    #dvdLayer {
   position: fixed;
   inset: 0;
   z-index: 1;
@@ -100,37 +104,152 @@
   overflow: hidden;
 }
 
-#dvdCanvas {
-  position: absolute;
+#siteScroll {
+  position: fixed;
   inset: 0;
-  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 2;
 }
 
 .wrap {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+}
+
+#fakeScrollbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100vh;
+  background: #c0c0c0;
+  z-index: 99998;
+  box-sizing: border-box;
 }
 
 #musicToggle {
   position: fixed;
   top: 10px;
-  right: 10px;
+  right: 30px; /* was 10px */
   z-index: 999999;
+  cursor: pointer;
+  user-select: none;
 }
 
 #xpPopup {
   z-index: 99999;
 }
 
-</style>
-</head>
+    /* ================= CUSTOM RETRO SCROLLBAR ================= */
+    #fakeScrollbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100vh;
+  background: #c0c0c0;
+  z-index: 99998;
+  box-sizing: border-box;
+}
 
+#fakeScrollbar .arrow {
+  width: 20px;
+  height: 20px;
+  background: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+}
+
+#fakeScrollbar .arrow.up {
+  top: 0;
+}
+
+#fakeScrollbar .arrow.down {
+  bottom: 0;
+}
+
+#fakeScrollbar .track {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 0;
+  width: 20px;
+  background: #d4d0c8;
+  border-left: 1px solid #808080;
+  border-top: 1px solid #808080;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  box-sizing: border-box;
+}
+
+#fakeScrollbar .thumb {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 18px;
+  height: 40px;
+  background: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  box-sizing: border-box;
+  cursor: grab;
+}
+
+#fakeScrollbar .thumb:active {
+  cursor: grabbing;
+}
+
+#fakeScrollbar .arrow.up::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 6px solid #000;
+}
+
+#fakeScrollbar .arrow.down::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid #000;
+}
+  </style>
+</head>
 <body>
 
 <div id="dvdLayer">
   <canvas id="dvdCanvas" aria-label="DVD logo animation"></canvas>
 </div>
 
+<div id="fakeScrollbar">
+  <div class="arrow up"></div>
+  <div class="track">
+    <div class="thumb"></div>
+  </div>
+  <div class="arrow down"></div>
+</div>
+
+<div id="siteScroll">
   <!-- ===================================================== -->
   <!-- ====================== PAGE WRAP ==================== -->
   <!-- ===================================================== -->
@@ -143,9 +262,9 @@
       <tr>
 
         <!-- LEFT GIF -->
-      <td width="100" align="center">
-        <img src="assets/earth.gif" width="60">
-      </td>
+        <td width="100" align="center">
+          <img src="assets/earth.gif" width="60">
+        </td>
 
         <!-- CENTER TEXT -->
         <td align="center">
@@ -165,9 +284,9 @@
         </td>
 
         <!-- RIGHT GIF -->
-      <td width="100" align="center">
-        <img src="assets/earth2.gif" width="60">
-      </td>
+        <td width="100" align="center">
+          <img src="assets/earth2.gif" width="60">
+        </td>
 
       </tr>
     </table>
@@ -254,7 +373,6 @@
             <!-- VISITOR COUNT / GUESTBOOK -->
             <center class="tiny">
               <font color="#ffffff"><b>VISITOR COUNT:</b></font><br>
-              <!-- Replace with a real counter image if you want -->
               <font face="Courier New" size="3" color="#00ff66">
                 <b>000042</b>
               </font>
@@ -549,6 +667,7 @@
 
     <br>
   </div>
+</div>
 
   <!-- ===================================================== -->
   <!-- ======================= SCRIPTS ===================== -->
@@ -556,19 +675,15 @@
 
   <!-- =================== CURSOR TRAIL SCRIPT =================== -->
   <script>
-  // "Clone cursor" trail (2002 DHTML vibes), 6 cursors that appear only while moving,
-  // then catch up and hide underneath the real cursor.
   (function () {
-    var COUNT = 6;                 // how many fake cursors
-    var EASE = 0.20;               // follow speed (higher = snappier)
-    var SHOW_DISTANCE = 6;         // if trail is spread out beyond this, show it
-    var HIDE_DISTANCE = 1.25;      // when all are basically on top of cursor, hide
-    var STOP_DELAY_MS = 60;        // how quickly we decide you've "stopped"
-    var OFFSET_X = 0;              // tweak if needed
-    var OFFSET_Y = 0;              // tweak if needed
+    var COUNT = 6;
+    var EASE = 0.20;
+    var SHOW_DISTANCE = 6;
+    var HIDE_DISTANCE = 1.25;
+    var STOP_DELAY_MS = 60;
+    var OFFSET_X = 0;
+    var OFFSET_Y = 0;
 
-    // A simple "classic arrow cursor" SVG (white fill, black outline)
-    // This won't be *your* system cursor, but it's extremely close visually.
     var cursorSVG =
       'data:image/svg+xml;utf8,' +
       encodeURIComponent(
@@ -583,7 +698,6 @@
     var lastMove = 0;
     var moving = false;
 
-    // Create cursor clones
     for (var i = 0; i < COUNT; i++) {
       var d = document.createElement("div");
       d.style.position = "absolute";
@@ -595,8 +709,7 @@
       d.style.backgroundRepeat = "no-repeat";
       d.style.backgroundSize = "20px 20px";
       d.style.visibility = "hidden";
-      d.style.opacity = (1 - i * 0.12).toString(); // slight fade back in trail
-      // Make sure we don't accidentally show a text cursor etc.
+      d.style.opacity = (1 - i * 0.12).toString();
       d.style.cursor = "default";
 
       document.body.appendChild(d);
@@ -607,7 +720,6 @@
 
     function now() { return Date.now ? Date.now() : +new Date(); }
 
-    // Track mouse position
     document.addEventListener("mousemove", function (e) {
       var mx = (e.pageX != null) ? e.pageX : e.clientX + document.body.scrollLeft;
       var my = (e.pageY != null) ? e.pageY : e.clientY + document.body.scrollTop;
@@ -618,7 +730,6 @@
       lastMove = now();
       moving = true;
 
-      // On first movement, seed all cursors at the mouse so it doesn't "snap" in from 0,0
       if (pos[0].x === 0 && pos[0].y === 0) {
         for (var i = 0; i < COUNT; i++) {
           pos[i].x = targetX;
@@ -639,30 +750,22 @@
     }
 
     function render() {
-      // Lead cursor follows mouse target
       pos[0].x += (targetX - pos[0].x) * EASE;
       pos[0].y += (targetY - pos[0].y) * EASE;
 
-      // Each next cursor follows the one in front
       for (var i = 1; i < COUNT; i++) {
         pos[i].x += (pos[i-1].x - pos[i].x) * EASE;
         pos[i].y += (pos[i-1].y - pos[i].y) * EASE;
       }
 
-      // Position DOM elements
       for (var j = 0; j < COUNT; j++) {
-        // Slight subpixel smoothing looks too modern; rounding feels more 2002
         nodes[j].style.left = (pos[j].x | 0) + "px";
         nodes[j].style.top  = (pos[j].y | 0) + "px";
       }
 
-      // Determine if we're "stopped"
       var t = now();
       if (moving && (t - lastMove) > STOP_DELAY_MS) moving = false;
 
-      // Decide when to show/hide:
-      // - show when moving AND the trail is meaningfully stretched
-      // - when not moving, let them catch up; hide once they're all basically under cursor
       var spread = dist(pos[COUNT-1].x, pos[COUNT-1].y, pos[0].x, pos[0].y);
       var allClose =
         dist(pos[0].x, pos[0].y, targetX, targetY) < HIDE_DISTANCE &&
@@ -673,90 +776,83 @@
       } else if (!moving && allClose) {
         setVisible(false);
       } else {
-        // If they're still catching up, keep visible briefly
-        // (or hide if you want it stricter—your call)
         if (!moving) setVisible(true);
       }
 
       requestAnimationFrame(render);
     }
 
-    // Start hidden until first movement
     setVisible(false);
     requestAnimationFrame(render);
   })();
   </script>
 
   <script>
-// draggable XP popup (wait until page is loaded)
-window.addEventListener("load", function () {
-  var popup = document.getElementById("xpPopup");
-  var bar   = document.getElementById("xpTitlebar");
-  if (!popup || !bar) {
-    console.log("Drag init failed:", { popup: !!popup, bar: !!bar });
-    return;
-  }
+  window.addEventListener("load", function () {
+    var popup = document.getElementById("xpPopup");
+    var bar   = document.getElementById("xpTitlebar");
+    if (!popup || !bar) {
+      console.log("Drag init failed:", { popup: !!popup, bar: !!bar });
+      return;
+    }
 
-  // Optional: make the titlebar feel draggable
-  bar.style.cursor = "move";
-  bar.style.userSelect = "none";
+    bar.style.cursor = "move";
+    bar.style.userSelect = "none";
 
-  var dragging = false;
-  var startX = 0, startY = 0;
-  var startLeft = 0, startTop = 0;
+    var dragging = false;
+    var startX = 0, startY = 0;
+    var startLeft = 0, startTop = 0;
 
-  function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+    function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
 
-  function onDown(e){
-    // Only drag if the popup is visible
-    if (popup.style.display === "none") return;
+    function onDown(e){
+      if (popup.style.display === "none") return;
 
-    dragging = true;
-    startX = e.clientX;
-    startY = e.clientY;
+      dragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
 
-    var rect = popup.getBoundingClientRect();
-    startLeft = rect.left;
-    startTop  = rect.top;
+      var rect = popup.getBoundingClientRect();
+      startLeft = rect.left;
+      startTop  = rect.top;
 
-    // Ensure we are controlling it with left/top
-    popup.style.right = "auto";
-    popup.style.bottom = "auto";
+      popup.style.right = "auto";
+      popup.style.bottom = "auto";
 
-    e.preventDefault();
-  }
+      e.preventDefault();
+    }
 
-  function onMove(e){
-    if (!dragging) return;
+    function onMove(e){
+      if (!dragging) return;
 
-    var dx = e.clientX - startX;
-    var dy = e.clientY - startY;
+      var dx = e.clientX - startX;
+      var dy = e.clientY - startY;
 
-    var newLeft = startLeft + dx;
-    var newTop  = startTop + dy;
+      var newLeft = startLeft + dx;
+      var newTop  = startTop + dy;
 
-    var margin = 6;
-    var maxLeft = window.innerWidth - popup.offsetWidth - margin;
-    var maxTop  = window.innerHeight - popup.offsetHeight - margin;
+      var margin = 6;
+      var maxLeft = window.innerWidth - popup.offsetWidth - margin;
+      var maxTop  = window.innerHeight - popup.offsetHeight - margin;
 
-    newLeft = clamp(newLeft, margin, maxLeft);
-    newTop  = clamp(newTop, margin, maxTop);
+      newLeft = clamp(newLeft, margin, maxLeft);
+      newTop  = clamp(newTop, margin, maxTop);
 
-    popup.style.left = newLeft + "px";
-    popup.style.top  = newTop + "px";
-  }
+      popup.style.left = newLeft + "px";
+      popup.style.top  = newTop + "px";
+    }
 
-  function onUp(){
-    dragging = false;
-  }
+    function onUp(){
+      dragging = false;
+    }
 
-  bar.addEventListener("mousedown", onDown);
-  window.addEventListener("mousemove", onMove);
-  window.addEventListener("mouseup", onUp);
+    bar.addEventListener("mousedown", onDown);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
 
-  console.log("XP popup drag enabled ✅");
-});
-</script>
+    console.log("XP popup drag enabled ✅");
+  });
+  </script>
 
   <!-- ======================= XP POPUP ======================= -->
   <div id="xpPopup">
@@ -780,8 +876,6 @@ window.addEventListener("load", function () {
     setTimeout(function () {
       var popup = document.getElementById("xpPopup");
       popup.style.display = "block";
-
-      // Random position (very 2002)
       popup.style.top = (window.innerHeight / 2 - 100) + "px";
       popup.style.left = (window.innerWidth / 2 - 160) + "px";
     }, 120000);
@@ -834,109 +928,203 @@ window.addEventListener("load", function () {
     <source src="assets/click.wav" type="audio/wav">
   </audio>
 
-
   <script>
-(function () {
-  var canvas = document.getElementById("dvdCanvas");
-  if (!canvas) return;
+  (function () {
+    var canvas = document.getElementById("dvdCanvas");
+    if (!canvas) return;
 
-  var ctx = canvas.getContext("2d");
-  var img = new Image();
-  img.src = "assets/dvd_logo.png";
+    var ctx = canvas.getContext("2d");
+    var img = new Image();
+    img.src = "assets/dvd_logo.png";
 
-  var x = 40;
-  var y = 40;
-  var dx = 1.2;
-  var dy = 0.9;
+    var x = 40;
+    var y = 40;
+    var dx = 1.2;
+    var dy = 0.9;
 
-  var logoW = 140;
-  var logoH = 64;
+    var logoW = 140;
+    var logoH = 64;
 
-  var colors = ["#FF008B","#BE00FF","#FFFA01","#FF8300","#00FEFF","#FF2600","#0026FF"];
-  var colorIndex = 0;
+    var colors = ["#FF008B","#BE00FF","#FFFA01","#FF8300","#00FEFF","#FF2600","#0026FF"];
+    var colorIndex = 0;
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  function nextColor() {
-    var newIndex = colorIndex;
-    while (newIndex === colorIndex) {
-      newIndex = Math.floor(Math.random() * colors.length);
-    }
-    colorIndex = newIndex;
-  }
-
-  function drawTintedImage() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    if (!img.complete) return;
-
-    ctx.drawImage(img, x, y, logoW, logoH);
-    ctx.globalCompositeOperation = "source-in";
-    ctx.fillStyle = colors[colorIndex];
-    ctx.fillRect(x, y, logoW, logoH);
-    ctx.globalCompositeOperation = "source-over";
-  }
-
-  function animate() {
-    x += dx;
-    y += dy;
-
-    var hit = false;
-
-    if (x <= 0) {
-      x = 0;
-      dx = Math.abs(dx);
-      hit = true;
-    } else if (x + logoW >= canvas.width) {
-      x = canvas.width - logoW;
-      dx = -Math.abs(dx);
-      hit = true;
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
 
-    if (y <= 0) {
-      y = 0;
-      dy = Math.abs(dy);
-      hit = true;
-    } else if (y + logoH >= canvas.height) {
-      y = canvas.height - logoH;
-      dy = -Math.abs(dy);
-      hit = true;
+    function nextColor() {
+      var newIndex = colorIndex;
+      while (newIndex === colorIndex) {
+        newIndex = Math.floor(Math.random() * colors.length);
+      }
+      colorIndex = newIndex;
     }
 
-    if (hit) nextColor();
+    function drawTintedImage() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    drawTintedImage();
-    requestAnimationFrame(animate);
-  }
+      if (!img.complete) return;
 
-  window.addEventListener("resize", resizeCanvas);
+      ctx.drawImage(img, x, y, logoW, logoH);
+      ctx.globalCompositeOperation = "source-in";
+      ctx.fillStyle = colors[colorIndex];
+      ctx.fillRect(x, y, logoW, logoH);
+      ctx.globalCompositeOperation = "source-over";
+    }
 
-  img.onload = function () {
+    function animate() {
+      x += dx;
+      y += dy;
+
+      var hit = false;
+
+      var scrollbarWidth = 20;
+var rightLimit = canvas.width - scrollbarWidth;
+
+if (x <= 0) {
+  x = 0;
+  dx = Math.abs(dx);
+  hit = true;
+} else if (x + logoW >= rightLimit) {
+  x = rightLimit - logoW;
+  dx = -Math.abs(dx);
+  hit = true;
+}
+
+      if (y <= 0) {
+        y = 0;
+        dy = Math.abs(dy);
+        hit = true;
+      } else if (y + logoH >= canvas.height) {
+        y = canvas.height - logoH;
+        dy = -Math.abs(dy);
+        hit = true;
+      }
+
+      if (hit) nextColor();
+
+      drawTintedImage();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+
+    img.onload = function () {
+      resizeCanvas();
+
+      if (img.naturalWidth && img.naturalHeight) {
+        var ratio = img.naturalWidth / img.naturalHeight;
+        logoH = Math.round(logoW / ratio);
+      }
+
+      drawTintedImage();
+      requestAnimationFrame(animate);
+    };
+
     resizeCanvas();
 
-    if (img.naturalWidth && img.naturalHeight) {
-      var ratio = img.naturalWidth / img.naturalHeight;
-      logoH = Math.round(logoW / ratio);
+    if (img.complete) {
+      if (img.naturalWidth && img.naturalHeight) {
+        var ratio = img.naturalWidth / img.naturalHeight;
+        logoH = Math.round(logoW / ratio);
+      }
+      drawTintedImage();
+      requestAnimationFrame(animate);
+    }
+  })();
+  </script>
+
+  <script>
+  (function () {
+    var scroller = document.getElementById("siteScroll");
+    var scrollbar = document.getElementById("fakeScrollbar");
+    if (!scroller || !scrollbar) return;
+
+    var thumb = scrollbar.querySelector(".thumb");
+    var track = scrollbar.querySelector(".track");
+    var up = scrollbar.querySelector(".arrow.up");
+    var down = scrollbar.querySelector(".arrow.down");
+
+    var dragging = false;
+    var startY = 0;
+    var startTop = 0;
+
+    function getMaxThumbTop() {
+      return track.clientHeight - thumb.offsetHeight - 2;
     }
 
-    drawTintedImage();
-    requestAnimationFrame(animate);
-  };
-
-  resizeCanvas();
-
-  if (img.complete) {
-    if (img.naturalWidth && img.naturalHeight) {
-      var ratio = img.naturalWidth / img.naturalHeight;
-      logoH = Math.round(logoW / ratio);
+    function getMaxScrollTop() {
+      return scroller.scrollHeight - scroller.clientHeight;
     }
-    drawTintedImage();
-    requestAnimationFrame(animate);
-  }
-})();
-</script>
+
+    function updateThumb() {
+      var maxScroll = getMaxScrollTop();
+      var maxThumb = getMaxThumbTop();
+
+      if (maxScroll <= 0) {
+        thumb.style.top = "1px";
+        return;
+      }
+
+      var ratio = scroller.scrollTop / maxScroll;
+      thumb.style.top = (1 + ratio * maxThumb) + "px";
+    }
+
+    function scrollFromThumb(top) {
+      var maxThumb = getMaxThumbTop();
+      var maxScroll = getMaxScrollTop();
+
+      top = Math.max(1, Math.min(1 + maxThumb, top));
+      thumb.style.top = top + "px";
+
+      var ratio = maxThumb > 0 ? (top - 1) / maxThumb : 0;
+      scroller.scrollTop = ratio * maxScroll;
+    }
+
+    thumb.addEventListener("mousedown", function (e) {
+      dragging = true;
+      startY = e.clientY;
+      startTop = parseFloat(thumb.style.top) || 1;
+      document.body.style.userSelect = "none";
+      e.preventDefault();
+    });
+
+    window.addEventListener("mousemove", function (e) {
+      if (!dragging) return;
+      var delta = e.clientY - startY;
+      scrollFromThumb(startTop + delta);
+    });
+
+    window.addEventListener("mouseup", function () {
+      dragging = false;
+      document.body.style.userSelect = "";
+    });
+
+    up.addEventListener("click", function () {
+      scroller.scrollTop -= 80;
+    });
+
+    down.addEventListener("click", function () {
+      scroller.scrollTop += 80;
+    });
+
+    track.addEventListener("click", function (e) {
+      if (e.target === thumb) return;
+
+      var rect = track.getBoundingClientRect();
+      var clickY = e.clientY - rect.top;
+      var newTop = clickY - thumb.offsetHeight / 2;
+      scrollFromThumb(newTop);
+    });
+
+    scroller.addEventListener("scroll", updateThumb);
+    window.addEventListener("resize", updateThumb);
+    window.addEventListener("load", updateThumb);
+
+    updateThumb();
+  })();
+  </script>
+
 </body>
 </html>
